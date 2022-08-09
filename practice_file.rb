@@ -23,6 +23,6 @@ def calculator(a, b, operation = "add")
 end
 
 p calculator(7, 2, "multiply")
-p calculator(5, 44, "add")
+p calculator(5, 6, "add")
 p calculator(85, 8, "multiply")
 p calculator(5, 62, "substract")
