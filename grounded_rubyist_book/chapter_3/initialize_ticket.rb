@@ -8,50 +8,48 @@ end
 Ticket.new
 
 class Ticket
+   VENUES = ["Convention Center", "Fairgrounds", "Town Hall"]
+  attr_reader :venue, :date
+  attr_accessor :price, :discount
+  Ticket::VENUES << "High School Gym"
+  p VENUES
+
+
   def initialize(venue)
+    if VENUES.include?(venue)
     @venue = venue
+    else
+      raise ArgumentError, "Unknown venue #{venue}"
+    end
   end
-  
-  def date=(day)
-    if day == 
-      
-    elsif 
+
+  def Ticket.most_expensive(*tickets)
+  tickets.max_by(&:price)
+end
+
+  def date=(date)
+    check_year = date.split("-")
+    if check_year[0].length == 4
+      @date = date
+    else
       puts "Please submit the date in the format 'yyyy-mm-dd'."
    end
-    @date = day
-  end
-  def date
-    @date
-  end
-
-  def price=(amount)
-    @price = amount
-  end
-  def price
-  @price
-  end
-
-  def discount
-    @discount
-  end
-  def discount=(disc)
-    @discount = disc
-  end
-
-  def venue
-    @venue
-  end
-  def date
-    @date
   end
 end
 
 ticket = Ticket.new("Town Hall")
 cc = Ticket.new("Convention Center")
+fg = Ticket.new("Fairgrounds")
+
 ticket.price=(100)
 ticket.discount=(ticket.price - (0.15 * ticket.price))
 ticket.date = "2013-11-12"
-ticket.date = "13-11-12"
+ticket.price = 120.00
+cc.price = 100.00
+fg.price = 180.00
+highest = Ticket.most_expensive(ticket,cc,fg)
+puts "The highest-priced ticket is the one for #{highest.venue}."
+
 puts "The ticket costs $#{"%.2f" % ticket.price}."
 #ticket.set_price(852)
 #puts "Whoops! -- the price just went up. it now costs $#{"%.2f" % ticket.price}"
