@@ -1,0 +1,2 @@
+
+File.delete("myOtherFile.txt")
