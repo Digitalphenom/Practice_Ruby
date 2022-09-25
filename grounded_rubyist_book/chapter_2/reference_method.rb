@@ -7,9 +7,8 @@ def change_string(str)
 end
 
 s = "Original string content!"
- change_string(s)
-
- puts s
+p change_string(s)
+p s
 
 #----------------
 #freezing and duping objects
@@ -17,16 +16,17 @@ s = "Original string content!"
 puts
 
 b = "main content"
-change_string(b.dup)
-puts b  
+p change_string(b.dup)
+p b  
 
 #--------------------
 puts
 
-s = "Original string content!"
-#s.freeze
-change_string(s)
+c = "Original string content!"
 
+p change_string(c)
+# c.freeze
+#>>'replace': can't modify frozen String: "Original string content!" (FrozenError)
 #------------------
 puts
 
