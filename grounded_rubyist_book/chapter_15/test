@@ -1,0 +1,16 @@
+class Person
+  attr_reader :name
+  def name=(name)
+    @name = name
+    normalize_name
+  end
+  private
+  def normalize_name
+    name.gsub!(/[^-a-z'.\s]/i, "")
+  end
+end
+sedrick = Person.new
+sedrick.name = "123Sedrick!! Pe%a9te"
+raise "Problem" unless sedrick.name == "Sedrick P"
+puts "Name has been normalized."
+p sedrick.private_methods.sort.grep(/normal/)
